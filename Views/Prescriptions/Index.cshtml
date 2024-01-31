@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AuthSystem2.Models.Prescription>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Prescription Dashboard</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Prescription</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dosage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrescriptionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocNotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dosage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrescriptionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocNotes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
